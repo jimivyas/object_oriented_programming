@@ -37,6 +37,9 @@ Chris.say_name
 Christina = Student.new("Christina")
 Christina.say_name
 
+Chris.teach
+
+Christina.teach
 
 
 # Both the instructor and the student should also be able to do a greeting, like "Hi, my name is #{name}". Where's the best place to put this common method?
