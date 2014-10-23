@@ -1,10 +1,16 @@
 class Rover
-	attr_accessor :X :Y :direction
-	def initialize(X, Y, direction)
+	attr_accessor :X, :Y, :direction
+	def initialize(X, Y)
+		@world_width = X
+		@world_height = Y
+	end
+
+	def set_position(X, Y, direction)
 		@X = X
 		@Y = Y
 		@direction = direction
 	end
+
 
 	def move
 		case @direction
@@ -38,43 +44,48 @@ class Rover
 	end
 
 	def turn_right
-			case @direction
-			when "N"
-				@direction = "E"
-			when "E"
-				@direction = "S"
-			when "S"
-				@direction = "W"
-			when "W"
-				@direction = "N"
-			else 
-				raise "there was an error in your turn_right function, #{@direction} (your direction) not good"
-			end
-		end				
-
-	def turn (turn_direction)
-		if turn_direction = "L" 
-			turn_left
-		elsif turn_direction = "R"
-			turn_right
+		case @direction
+		when "N"
+			@direction = "E"
+		when "E"
+			@direction = "S"
+		when "S"
+			@direction = "W"
+		when "W"
+			@direction = "N"
 		else 
-			raise "your turn function failed with input #{turn_direction}"
+			raise "there was an error in your turn_right function, #{@direction} (your direction) not good"
 		end
-	end
+	end				
 
 			
 	def read_instruction
+		puts "enter a series of commands in the form of M and L for the Rover"
 		instruction = gets.chomp
 		instruction.upcase!
 		instruction.each_char do |instruction|
-			if instruction. = "M"
+			case instruction
+			when "M"
 				move
-			elsif instruction = "L" || instruction = "R"
-				turn(direction)
-			else
-				puts "you have not input a valid instruction"
+			when "L"
+				turn_left
+			when "R"
+				turn_right
+			else 
+				raise "invalid instruction #{instruction} in read_instruction"
 			end
 		end
-
 	end
 end
+
+
+puts "What is the X value of the plateau?"
+mars_X = gets.chomp.to_i
+puts "What is the Y value of the plateau?"
+mars_Y = gets.chomp.to_i
+
+puts "Please input the position and direction for Rover 1"
+rover_1_input = 
+
+
+
