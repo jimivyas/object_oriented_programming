@@ -1,16 +1,16 @@
 #when you're done with the program just get it to use numbers for directions mod 4
 
 class Rover
-	attr_accessor :X, :Y, :direction
-	def initialize(X, Y)
-		@world_width = X
-		@world_height = Y
+	attr_accessor :x, :y, :direction, :world_width, :world_height
+	def initialize(x, y)
+		@world_width = x
+		@world_height = y
 	end
 
-	def set_position(X, Y, direction)
+	def set_position(x, y, direction)
 
-		@X = X
-		@Y = Y
+		@x = x
+		@y = y
 		@direction = direction
 	end
 
@@ -18,21 +18,21 @@ class Rover
 	def move
 		case @direction
 		when "N"
-			@Y +=1
+			@y +=1
 		when "S"
-			@Y -=1
+			@y -=1
 		when "E"
-			@X +=1
+			@x +=1
 		when "W"
-			@X -=1
+			@x -=1
 		else 
 			raise  "error in your move, tried to use #{@direction} which is invalid"
 		end
 		#sanity check to make sure it's in-bounds
-		@Y = [@Y, world_height].min
-		@Y = [@Y, 0].max
-		@X = [@X, world_width].min
-		@Y = [@X, 0].max
+		@y = [@y, world_height].min
+		@y = [@y, 0].max
+		@x = [@x, world_width].min
+		@y = [@x, 0].max
 	end
 
 	def turn(direction)
@@ -48,30 +48,29 @@ class Rover
 	end
 
 	def position
-		"#{X} #{Y} #{direction}"
+		"#{x} #{y} #{direction}"
 	end
 			
 	def read_instruction(instruction)
 			case instruction
 			when "M"
 				move
-			when "L"
-				turn_left
-			when "R"
-				turn_right
+			when "L", "R"
+				turn(instruction)
 			else 
 				raise "invalid instruction #{instruction} in read_instruction"
 			end
-		end
 	end
 end
 
-puts "Please enter the world height"
+puts "Please enter the world size"
 world_height, world_width = gets.chomp.split(" ").map { |s| s.to_i }
 mars_rover = Rover.new(world_width, world_height)
 loop do
+	line = gets
+	exit if line.nil?
 	puts "enter the starting position of the rover"
-	x, y, direction = gets.chomp.split(" ")
+	x, y, direction = line.chomp.split(" ")
 	x = x.to_i
 	y = y.to_i
 	mars_rover.set_position(x, y, direction)
