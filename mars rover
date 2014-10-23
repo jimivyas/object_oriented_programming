@@ -8,14 +8,12 @@ class Rover
 	end
 
 	def set_position(X, Y, direction)
+
 		@X = X
 		@Y = Y
 		@direction = direction
 	end
 
-	def method_name
-		
-	end
 
 	def move
 		case @direction
@@ -31,9 +29,9 @@ class Rover
 			raise  "error in your move, tried to use #{@direction} which is invalid"
 		end
 		#sanity check to make sure it's in-bounds
-		@Y = [@Y, 9].min
+		@Y = [@Y, world_height].min
 		@Y = [@Y, 0].max
-		@X = [@X, 0].min
+		@X = [@X, world_width].min
 		@Y = [@X, 0].max
 	end
 
@@ -101,7 +99,6 @@ class Rover
 end
 
 puts "Please enter the world height"
-world_height = gets.chomp.to_i
-puts "Please enter the world world_width"
-world_width = gets.chomp.to.i
+world_height, world_width = gets.chomp.split(" ").map { |s| s.to_i }
+
 
