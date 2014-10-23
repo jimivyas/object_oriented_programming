@@ -1,3 +1,5 @@
+#when you're done with the program just get it to use numbers for directions mod 4
+
 class Rover
 	attr_accessor :X, :Y, :direction
 	def initialize(X, Y)
@@ -11,6 +13,9 @@ class Rover
 		@direction = direction
 	end
 
+	def method_name
+		
+	end
 
 	def move
 		case @direction
@@ -25,38 +30,55 @@ class Rover
 		else 
 			raise  "error in your move, tried to use #{@direction} which is invalid"
 		end
+		#sanity check to make sure it's in-bounds
+		@Y = [@Y, 9].min
+		@Y = [@Y, 0].max
+		@X = [@X, 0].min
+		@Y = [@X, 0].max
 	end
 
-	
-	def turn_left
-		case @direction
-		when "N"
-			@direction = "W"
-		when "E"
-			@direction = "N"
-		when "S"
-			@direction = "E"
-		when "W"
-			@direction = "S"
+	def turn(direction)
+		d = @direction.tr("NESW", "0123").to_i
+		if direction == "L"
+			d = (d-1) % 4
+		elsif direction == "R"
+			d = (d+1) % 4
 		else 
-			raise "there was an error in your turn_left function, #{@direction} (your direction) not good"
+			raise "your direction is neither L or R it is #{direction}"
 		end
+		@direction = d.to_s.tr("0123", "NESW")
 	end
 
-	def turn_right
-		case @direction
-		when "N"
-			@direction = "E"
-		when "E"
-			@direction = "S"
-		when "S"
-			@direction = "W"
-		when "W"
-			@direction = "N"
-		else 
-			raise "there was an error in your turn_right function, #{@direction} (your direction) not good"
-		end
-	end				
+	# def turn_left
+	# 	case @direction
+	# 	when "N"
+	# 		@direction = "W"
+	# 	when "E"
+	# 		@direction = "N"
+	# 	when "S"
+	# 		@direction = "E"
+	# 	when "W"
+	# 		@direction = "S"
+	# 	else 
+	# 		raise "there was an error in your turn_left function, #{@direction} (your direction) not good"
+	# 	end
+	# end
+
+	# def turn_right
+	# 	case @direction
+
+	# 	when "N"
+	# 		@direction = "E"
+	# 	when "E"
+	# 		@direction = "S"
+	# 	when "S"
+	# 		@direction = "W"
+	# 	when "W"
+	# 		@direction = "N"
+	# 	else 
+	# 		raise "there was an error in your turn_right function, #{@direction} (your direction) not good"
+	# 	end
+	# end		
 
 			
 	def read_instruction
@@ -78,14 +100,8 @@ class Rover
 	end
 end
 
-
-puts "What is the X value of the plateau?"
-mars_X = gets.chomp.to_i
-puts "What is the Y value of the plateau?"
-mars_Y = gets.chomp.to_i
-
-puts "Please input the position and direction for Rover 1"
-rover_1_input = 
-
-
+puts "Please enter the world height"
+world_height = gets.chomp.to_i
+puts "Please enter the world world_width"
+world_width = gets.chomp.to.i
 
