@@ -29,10 +29,13 @@ class Instructor < Person
 	def teach
 		puts "Everything in Ruby is an object"
 	end
-
 end
 
+Chris = Instructor.new("Chris")
+Chris.say_name
 
+Christina = Student.new("Christina")
+Christina.say_name
 
 
 
