@@ -63,14 +63,18 @@ class Rover
 	end
 
 			
-	def read_instruction(instruction)
+	def read_instruction
+		instruction = gets.chomp
 		instruction.upcase!
-		if instruction. = "M"
-			move
-		elsif instruction = "L" || instruction = "R"
-			turn(direction)
-		else
-			puts "you have not input a valid instruction"
+		instruction.each_char do |instruction|
+			if instruction. = "M"
+				move
+			elsif instruction = "L" || instruction = "R"
+				turn(direction)
+			else
+				puts "you have not input a valid instruction"
+			end
 		end
+
 	end
 end
