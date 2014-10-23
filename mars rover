@@ -1,0 +1,65 @@
+class Rover
+	attr_accessor :X :Y :direction
+	def initialize(X, Y, direction)
+		@X = X
+		@Y = Y
+		@direction = direction
+	end
+
+	def move
+		case @direction
+		when "N"
+			@Y += 1
+		when "S"
+			@Y -= 1
+		when
+
+
+	# 	if @direction = "N"
+	# 		@Y += 1
+	# 	elsif @direction = "S"
+	# 		@Y -= 1
+	# 	elsif @direction = "E"
+	# 		@X += 1
+	# 	else @x -= 1
+	# 	end
+	# end
+	
+	def turn_left
+		case @direction
+			when "N"
+				@direction = "W"
+			when "E"
+				@direction = "N"
+			when "S"
+				@direction = "E"
+			when "W"
+				@direction = "S"
+			else 
+				puts "there was an error in your turn_left function"
+		end
+	end
+				
+
+
+	def turn (turn_direction)
+		if turn_direction = "L" 
+			if @direction = "N"
+				@direction = "W"
+			elsif @direction = 
+
+
+
+
+
+	def read_instruction(instruction)
+		instruction.upcase!
+		if instruction. = "M"
+			move
+		elsif instruction = "L" || instruction = "R"
+			turn(direction)
+		else
+			puts "you have not input a valid instruction"
+		end
+	end
+end
