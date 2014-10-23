@@ -47,37 +47,6 @@ class Rover
 		@direction = d.to_s.tr("0123", "NESW")
 	end
 
-	# def turn_left
-	# 	case @direction
-	# 	when "N"
-	# 		@direction = "W"
-	# 	when "E"
-	# 		@direction = "N"
-	# 	when "S"
-	# 		@direction = "E"
-	# 	when "W"
-	# 		@direction = "S"
-	# 	else 
-	# 		raise "there was an error in your turn_left function, #{@direction} (your direction) not good"
-	# 	end
-	# end
-
-	# def turn_right
-	# 	case @direction
-
-	# 	when "N"
-	# 		@direction = "E"
-	# 	when "E"
-	# 		@direction = "S"
-	# 	when "S"
-	# 		@direction = "W"
-	# 	when "W"
-	# 		@direction = "N"
-	# 	else 
-	# 		raise "there was an error in your turn_right function, #{@direction} (your direction) not good"
-	# 	end
-	# end		
-
 	def position
 		"#{X} #{Y} #{direction}"
 	end
