@@ -60,19 +60,23 @@ class Rover
 	end
 end
 
+def prompt
+		line = gets
+		exit if (line.nil? || line.strip.empty?)
+		line.strip
+end
+
 puts "Please enter the world size"
 world_height, world_width = gets.chomp.split(" ").map { |s| s.to_i }
 mars_rover = Rover.new(world_width, world_height)
 loop do
 	puts "enter the starting position of the rover or type quit to quit"
-	strng = gets.chomp
-	exit if strng == "quit"
-	x, y, direction = strng.split(" ")
+	x, y, direction = prompt.split(" ")
 	x = x.to_i
 	y = y.to_i
 	mars_rover.set_position(x, y, direction)
 	puts "enter rover commands pls"
-	instructions = gets.chomp.upcase
+	instructions = prompt.upcase
 	instructions.each_char do |character|
 		mars_rover.read_instruction(character)
 		end
