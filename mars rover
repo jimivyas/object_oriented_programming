@@ -78,6 +78,9 @@ class Rover
 	# 	end
 	# end		
 
+	def position
+		"#{X} #{Y} #{direction}"
+	end
 			
 	def read_instruction(instruction)
 			case instruction
@@ -103,6 +106,16 @@ loop do
 	x = x.to_i
 	y = y.to_i
 	mars_rover.set_position(x, y, direction)
+	puts "enter rover commands pls"
+	instructions = gets.chomp
+	instructions.each_char do |character|
+		mars_rover.read_instruction(character)
+		end
+	puts "#{mars_rover.position}"
+end
+
+
+	
 
 
 
