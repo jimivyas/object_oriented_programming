@@ -29,7 +29,7 @@ class Rover
 		@y = [@y, world_height].min
 		@y = [@y, 0].max
 		@x = [@x, world_width].min
-		@y = [@x, 0].max
+		@x = [@x, 0].max
 	end
 
 	def turn(direction)
